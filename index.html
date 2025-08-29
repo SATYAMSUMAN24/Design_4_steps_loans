@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Digital Loan Processing Centre</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Company Logo - Top Left -->
+    <div class="company-logo-header">
+      <img src="/logo/01.png" class="company-logo" alt="Kalolytics Logo">
+      <div class="call-request-section">
+        <button class="call-request-btn" onclick="requestCall()">
+          <span class="phone-icon">📞</span>
+          Request Call
+        </button>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="kalolytic-branding">
+        <div class="experience-text">Experience Speed Banking with</div>
+        <div class="kalolytics-logo">
+          <span class="k-mark">With Kalolytic</span><span class="press-text"> Smartest way to Get loan</span>
+        </div>
+        <div class="tagline">Fully Digital | Zero Paperwork | Do-It Yourself</div>
+      </div>
+    </div>
+
+    <!-- Progress Stepper -->
+    <div class="progress-stepper">
+      <div class="step active" data-step="1">
+        <div class="step-circle">1</div>
+        <div class="step-label">Basic details</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" data-step="2">
+        <div class="step-circle">2</div>
+        <div class="step-label">Personal details</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" data-step="3">
+        <div class="step-circle">3</div>
+        <div class="step-label">Income Details</div>
+      </div>
+      <div class="step-line"></div>
+      <div class="step" data-step="4">
+        <div class="step-circle">4</div>
+        <div class="step-label">Your Offer</div>
+      </div>
+    </div>
+
+    <!-- Step 1: Basic Details -->
+    <div class="step-content" id="step-1">
+      <div class="section-title">Help us Know better</div>
+      <form class="form-container">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" required>
+        </div>
+
+        <div class="form-group mobile-group">
+          <label for="mobile">Mobile</label>
+          <div class="mobile-input-container">
+            <input type="text" id="mobile" name="mobile" required>
+            <button type="button" class="verify-btn">Verify</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="loanAmount">Loan Amount</label>
+          <input type="number" id="loanAmount" name="loanAmount" required>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="panNumber">PAN Number</label>
+          <input type="text" id="panNumber" name="panNumber" required>
+          <div class="helper-text">Business PAN Number in case of Non Individual</div>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="agreeOVD" name="agreeOVD" required>
+          <label for="agreeOVD">I agree to validate my OVD Details.</label>
+        </div>
+      </form>
+
+      <div class="navigation-buttons">
+        <button class="next-btn" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Personal Details -->
+    <div class="step-content" id="step-2" style="display: none;">
+      <div class="section-title">Personal Details</div>
+      <form class="form-container">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+          </div>
+          <div class="form-group half">
+            <label for="fatherName">Father Name</label>
+            <input type="text" id="fatherName" name="fatherName" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="aadharNumber">Aadhar Number</label>
+            <input type="text" id="aadharNumber" name="aadharNumber" maxlength="12" required>
+          </div>
+          <div class="form-group half">
+            <label for="bureauScore">Bureau Score</label>
+            <input type="number" id="bureauScore" name="bureauScore" min="300" max="900">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group half">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="existingCustomer">Existing Customer</label>
+            <select id="existingCustomer" name="existingCustomer" required>
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="form-group half">
+            <label for="cifNumber">CIF Number</label>
+            <input type="text" id="cifNumber" name="cifNumber">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="residenceType">Residence Type</label>
+            <select id="residenceType" name="residenceType" required>
+              <option value="">Select</option>
+              <option value="owned">Owned</option>
+              <option value="rented">Rented</option>
+            </select>
+          </div>
+          <div class="form-group half">
+            <label for="yearsAtResidence">Years at Current Residence</label>
+            <input type="number" id="yearsAtResidence" name="yearsAtResidence" min="0" max="50" required>
+          </div>
+        </div>
+      </form>
+
+      <div class="navigation-buttons">
+        <button class="prev-btn" onclick="prevStep()">Previous</button>
+        <button class="next-btn" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Income Details -->
+    <div class="step-content" id="step-3" style="display: none;">
+      <div class="section-title">Income Details</div>
+      <form class="form-container">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="employerName">Employer Name</label>
+            <input type="text" id="employerName" name="employerName" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="grossMonthlyIncome">Gross Monthly Income</label>
+            <input type="number" id="grossMonthlyIncome" name="grossMonthlyIncome" step="0.01" required>
+          </div>
+          <div class="form-group half">
+            <label for="bonusOvertimeArrear">Less: Bonus/Overtime/Arrear</label>
+            <input type="number" id="bonusOvertimeArrear" name="bonusOvertimeArrear" step="0.01" value="0">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="totalIncome">Total Income</label>
+            <input type="number" id="totalIncome" name="totalIncome" step="0.01" readonly>
+          </div>
+          <div class="form-group half">
+            <label for="totalMonthlyObligation">Total Monthly Obligation</label>
+            <input type="number" id="totalMonthlyObligation" name="totalMonthlyObligation" step="0.01" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label for="netMonthlySalary">Net Monthly Salary</label>
+            <input type="number" id="netMonthlySalary" name="netMonthlySalary" step="0.01" readonly>
+          </div>
+          <div class="form-group half">
+            <label for="yearsAtEmployer">Years at Current Employer</label>
+            <input type="number" id="yearsAtEmployer" name="yearsAtEmployer" step="0.1" min="0" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="officialEmailID">Official Email ID</label>
+            <input type="email" id="officialEmailID" name="officialEmailID" required>
+          </div>
+        </div>
+      </form>
+
+      <div class="navigation-buttons">
+        <button class="prev-btn" onclick="prevStep()">Previous</button>
+        <button class="next-btn" onclick="nextStep()">Next</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Your Offer -->
+    <div class="step-content" id="step-4" style="display: none;">
+      <div class="congratulations">
+        <h2>Congratulations!!!</h2>
+        <div class="offer-details">
+          <p>Your new car is available at just</p>
+          <div class="loan-amount" id="dynamicEMI">Rs. 5,500 p.m.</div>
+
+          <div class="tenure-section">
+            <div class="tenure-controls">
+              <label for="tenureSlider">Tenure - <span id="tenureDisplay">84</span> months</label>
+              <input type="range" id="tenureSlider" min="12" max="84" step="6" value="84" class="tenure-slider">
+              <div class="tenure-labels">
+                <span>12 months</span>
+                <span>84 months</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="loan-info">
+            <p>Tenure can be entered or by slider at intervals of 6 months</p>
+            <p><strong>Loan Amount:</strong> <span id="displayLoanAmount">10 Lakhs</span></p>
+            <p><strong>Rate of Interest:</strong> <span id="displayInterestRate">8.50</span> p.a.*</p>
+            <p><strong>Processing Charges:</strong> Rs.1,180</p>
+            <p><strong>Login Fee + GST:</strong> Rs.1,180</p>
+          </div>
+          <div class="financing-note">
+            Bank will finance <span class="highlight">90% of invoice amount - Accessories</span>
+          </div>
+          <div class="disclaimer">
+            *The above EMI and ROI are indicative and subject to Proforma Invoice & other documentation as per retail loan policy.
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <button class="prev-btn" onclick="prevStep()">Previous</button>
+        <button class="next-btn" onclick="nextStep()">Continue to Documents</button>
+      </div>
+    </div>
+
+    <!-- Loan Selection Page (Alternative Step 0) -->
+    <div class="step-content" id="loan-selection" style="display: none;">
+      <div class="access-header">
+        <h2>SUPERFAST ACCESS TO</h2>
+      </div>
+
+      <div class="loan-cards-grid">
+        <div class="loan-card home-loan" data-value="home" onclick="selectLoanCard(this)" 
+             tabindex="0" role="button" aria-label="Select Home Loan" 
+             onkeypress="if(event.key==='Enter'||event.key===' '){selectLoanCard(this);}">
+          <div class="card-content">
+            <div class="kalolytic-badge">
+              <span class="k-mark">K</span><span class="alolytic-text">alolytic</span>
+            </div>
+            <h3>Home Loan</h3>
+            <div class="card-image">
+              <img src="/logo/f.jpeg" 
+                   alt="Happy family in front of their new home" 
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'family-icon\'>🏠👨‍👩‍👧‍👦</div>'">
+            </div>
+          </div>
+        </div>
+
+        <div class="loan-card car-loan active" data-value="vehicle" onclick="selectLoanCard(this)"
+             tabindex="0" role="button" aria-label="Select Car Loan"
+             onkeypress="if(event.key==='Enter'||event.key===' '){selectLoanCard(this);}">
+          <div class="card-content">
+            <div class="kalolytic-badge">
+              <span class="k-mark">K</span><span class="alolytic-text">alolytic</span>
+            </div>
+            <h3>Car Loan</h3>
+            <div class="card-image">
+              <img src="/logo/car.jpeg" 
+                   alt="Young couple with their new car" 
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'car-icon\'>🚗👫</div>'">
+            </div>
+          </div>
+        </div>
+
+        <div class="loan-card personal-loan" data-value="personal" onclick="selectLoanCard(this)"
+             tabindex="0" role="button" aria-label="Select Personal Loan"
+             onkeypress="if(event.key==='Enter'||event.key===' '){selectLoanCard(this);}">
+          <div class="card-content">
+            <div class="kalolytic-badge">
+              <span class="k-mark">K</span><span class="alolytic-text">alolytic</span>
+            </div>
+            <h3>Personal Loan</h3>
+            <div class="card-image">
+              <img src="/logo/p.jpg" 
+                   alt="Couple planning their vacation with travel gear" 
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'personal-icon\'>✈️👫</div>'">
+            </div>
+          </div>
+        </div>
+
+        <div class="loan-card business-loan" data-value="business" onclick="selectLoanCard(this)"
+             tabindex="0" role="button" aria-label="Select Business Loan"
+             onkeypress="if(event.key==='Enter'||event.key===' '){selectLoanCard(this);}">
+          <div class="card-content">
+            <div class="kalolytic-badge">
+              <span class="k-mark">K</span><span class="alolytic-text">alolytic</span>
+            </div>
+            <h3>Business Loan</h3>
+            <div class="card-image">
+              <img src="/logo/buss.jpeg" 
+                   alt="Professional businesswoman in office" 
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'business-icon\'>💼👩‍💼</div>'">
+            </div>
+          </div>
+        </div>
+
+        <div class="loan-card two-wheeler-loan" data-value="2wheeler" onclick="selectLoanCard(this)"
+             tabindex="0" role="button" aria-label="Select Two Wheeler Loan"
+             onkeypress="if(event.key==='Enter'||event.key===' '){selectLoanCard(this);}">
+          <div class="card-content">
+            <div class="kalolytic-badge">
+              <span class="k-mark">K</span><span class="alolytic-text">alolytic</span>
+            </div>
+            <h3>Two Wheeler Loan</h3>
+            <div class="card-image">
+              <img src="/logo/w.jpeg" 
+                   alt="Woman with motorcycle scooter" 
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'bike-icon\'>🏍️👩</div>'">
+            </div>
+          </div>
+        </div>
+        
+        <div class="loan-card credit-card-loan" data-value="creditcard" onclick="selectLoanCard(this)"
+             tabindex="0" role="button" aria-label="Select Loan on Credit Card"
+             onkeypress="if(event.key==='Enter'||event.key===' '){selectLoanCard(this);}">
+          <div class="card-content">
+            <div class="kalolytic-badge">
+              <span class="k-mark">K</span><span class="alolytic-text">alolytic</span>
+            </div>
+            <h3>Loan on Credit Card</h3>
+            <div class="card-image">
+              <img src="/logo/card.jpeg" 
+                   alt="Happy man with credit card" 
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'credit-icon\'>💳😊</div>'">
+            </div>
+          </div>
+        </div>
+
+        <div class="loan-card securities-loan" data-value="securities" onclick="selectLoanCard(this)"
+             tabindex="0" role="button" aria-label="Select Loan Against Securities"
+             onkeypress="if(event.key==='Enter'||event.key===' '){selectLoanCard(this);}">
+          <div class="card-content">
+            <div class="kalolytic-badge">
+              <span class="k-mark">K</span><span class="alolytic-text">alolytic</span>
+            </div>
+            <h3>Loan Against Securities</h3>
+            <div class="card-image">
+              <img src="/logo/secu.jpeg" 
+                   alt="Professional man with financial documents" 
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'securities-icon\'>📊👨‍💼</div>'">
+            </div>
+          </div>
+        </div>
+
+        <div class="loan-card easy-emi-loan" data-value="easyemi" onclick="selectLoanCard(this)"
+             tabindex="0" role="button" aria-label="Select EASYEMI on Consumer Loans"
+             onkeypress="if(event.key==='Enter'||event.key===' '){selectLoanCard(this);}">
+          <div class="card-content">
+            <div class="kalolytic-badge">
+              <span class="k-mark">K</span><span class="alolytic-text">alolytic</span>
+            </div>
+            <h3>EASYEMI on Consumer Loans</h3>
+            <div class="card-image">
+              <img src="/logo/easy.png" 
+                   alt="Consumer enjoying easy EMI benefits" 
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'emi-icon\'>💰😊</div>'">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <button class="apply-now-btn" onclick="startApplication()">Apply Now</button>
+      </div>
+    </div>
+
+    <!-- Document Upload Page -->
+    <div class="step-content" id="document-upload" style="display: none;">
+      <div class="upload-header">
+        <h2>Complete Your Application for Quick Approval</h2>
+      </div>
+
+      <div class="upload-grid">
+        <div class="upload-item">
+          <div class="upload-box" id="bankStatement">
+            <h3>Bank Statement</h3>
+            <button class="upload-btn">Upload</button>
+            <div class="upload-status"></div>
+          </div>
+        </div>
+
+        <div class="upload-item">
+          <div class="upload-box" id="dealerInvoice">
+            <h3>Dealer Invoice</h3>
+            <button class="upload-btn">Upload</button>
+            <div class="upload-status"></div>
+          </div>
+        </div>
+
+        <div class="upload-item">
+          <div class="upload-box" id="gstDoc">
+            <h3>GST</h3>
+            <button class="upload-btn">Upload</button>
+            <div class="upload-status"></div>
+          </div>
+        </div>
+
+        <div class="upload-item">
+          <div class="upload-box" id="itrDoc">
+            <h3>ITR</h3>
+            <button class="upload-btn">Upload</button>
+            <div class="upload-status"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <button class="prev-btn" onclick="prevStep()">Previous</button>
+        <button class="next-btn" onclick="proceedToFinalApproval()" id="proceedToApproval">Proceed to Final Approval</button>
+      </div>
+    </div>
+
+    <!-- Final Review Page -->
+    <div class="step-content" id="final-review" style="display: none;">
+      <div class="review-header">
+        <h2>Review Your Application</h2>
+        <p>Please review all the information you've provided before final submission.</p>
+      </div>
+
+      <div class="review-container">
+        <!-- Loan Selection Review -->
+        <div class="review-section">
+          <div class="review-section-header">
+            <h3>🎯 Loan Selection</h3>
+            <button class="edit-section-btn" onclick="editSection(0)">✏️ Edit</button>
+          </div>
+          <div class="review-content">
+            <div class="review-item">
+              <span class="review-label">Loan Type:</span>
+              <span class="review-value" id="reviewLoanType">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Basic Details Review -->
+        <div class="review-section">
+          <div class="review-section-header">
+            <h3>👤 Basic Details</h3>
+            <button class="edit-section-btn" onclick="editSection(1)">✏️ Edit</button>
+          </div>
+          <div class="review-content">
+            <div class="review-item">
+              <span class="review-label">Full Name:</span>
+              <span class="review-value" id="reviewFullName">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Mobile:</span>
+              <span class="review-value" id="reviewMobile">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Loan Amount:</span>
+              <span class="review-value" id="reviewLoanAmount">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">PAN Number:</span>
+              <span class="review-value" id="reviewPanNumber">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Details Review -->
+        <div class="review-section">
+          <div class="review-section-header">
+            <h3>🏠 Personal Details</h3>
+            <button class="edit-section-btn" onclick="editSection(2)">✏️ Edit</button>
+          </div>
+          <div class="review-content">
+            <div class="review-item">
+              <span class="review-label">Address:</span>
+              <span class="review-value" id="reviewAddress">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Date of Birth:</span>
+              <span class="review-value" id="reviewDob">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Father Name:</span>
+              <span class="review-value" id="reviewFatherName">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Aadhar Number:</span>
+              <span class="review-value" id="reviewAadhar">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Email:</span>
+              <span class="review-value" id="reviewEmail">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Gender:</span>
+              <span class="review-value" id="reviewGender">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Residence Type:</span>
+              <span class="review-value" id="reviewResidenceType">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Income Details Review -->
+        <div class="review-section">
+          <div class="review-section-header">
+            <h3>💰 Income Details</h3>
+            <button class="edit-section-btn" onclick="editSection(3)">✏️ Edit</button>
+          </div>
+          <div class="review-content">
+            <div class="review-item">
+              <span class="review-label">Employer Name:</span>
+              <span class="review-value" id="reviewEmployerName">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Gross Income:</span>
+              <span class="review-value" id="reviewGrossIncome">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Net Salary:</span>
+              <span class="review-value" id="reviewNetSalary">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Years at Employer:</span>
+              <span class="review-value" id="reviewYearsEmployer">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Official Email:</span>
+              <span class="review-value" id="reviewOfficialEmail">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loan Offer Review -->
+        <div class="review-section">
+          <div class="review-section-header">
+            <h3>📋 Loan Offer Details</h3>
+          </div>
+          <div class="review-content">
+            <div class="review-item">
+              <span class="review-label">EMI:</span>
+              <span class="review-value" id="reviewEMI">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Tenure:</span>
+              <span class="review-value" id="reviewTenure">-</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Interest Rate:</span>
+              <span class="review-value" id="reviewInterestRate">-</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Status Review -->
+        <div class="review-section">
+          <div class="review-section-header">
+            <h3>📄 Document Status</h3>
+            <button class="edit-section-btn" onclick="editSection(5)">✏️ Edit</button>
+          </div>
+          <div class="review-content">
+            <div class="review-item">
+              <span class="review-label">Bank Statement:</span>
+              <span class="review-value document-status" id="reviewBankStatement">❌ Not Uploaded</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">Dealer Invoice:</span>
+              <span class="review-value document-status" id="reviewDealerInvoice">❌ Not Uploaded</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">GST Document:</span>
+              <span class="review-value document-status" id="reviewGstDoc">❌ Not Uploaded</span>
+            </div>
+            <div class="review-item">
+              <span class="review-label">ITR Document:</span>
+              <span class="review-value document-status" id="reviewItrDoc">❌ Not Uploaded</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Confirmation -->
+      <div class="review-confirmation">
+        <div class="confirmation-checkbox">
+          <input type="checkbox" id="finalConfirmation" name="finalConfirmation" required>
+          <label for="finalConfirmation">I confirm that all the information provided above is accurate and complete. I understand that providing false information may result in rejection of my loan application.</label>
+        </div>
+      </div>
+
+      <div class="navigation-buttons">
+        <button class="prev-btn" onclick="prevStep()">Previous</button>
+        <button class="next-btn" onclick="nextStep()">Submit Application</button>
+      </div>
+    </div>
+
+    <!-- Final Approval Page -->
+    <div class="step-content" id="final-approval" style="display: none;">
+      <div class="approval-header">
+        <h2>Congratulation Your Loan has been In Principally Approved</h2>
+      </div>
+
+      <div class="sanction-details">
+        <h3>In-Principal Sanction</h3>
+        <table class="sanction-table">
+          <tr>
+            <td>Loan Amount</td>
+            <td>Exact ROI</td>
+            <td>Tenure</td>
+          </tr>
+          <tr>
+            <td>Exact EMI</td>
+            <td>Processing Fees + GST</td>
+            <td>Login Charges + GST</td>
+          </tr>
+          <tr>
+            <td>Cereal Charges + GST</td>
+            <td>Vahan Charges + GST</td>
+            <td>Valuation Charges + GST</td>
+          </tr>
+          <tr>
+            <td>Legal Charges + GST</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="action-buttons">
+        <button class="accept-btn" onclick="showThankYou()">Accept</button>
+        <button class="co-applicant-btn">Add Co-Applicant/Guarantor</button>
+      </div>
+
+      <div class="navigation-buttons">
+        <button class="prev-btn" onclick="prevStep()">Previous</button>
+      </div>
+    </div>
+
+    <!-- Thank You Page -->
+    <div class="step-content" id="thank-you" style="display: none;">
+      <div class="thank-you-content">
+        <div class="success-icon">✓</div>
+        <h2>Thank You!</h2>
+        <p>Your loan application has been successfully submitted.</p>
+        <p>You will receive a confirmation email shortly with your application reference number.</p>
+
+        <div class="next-steps">
+          <h3>Next Steps:</h3>
+          <ul>
+            <li>Our team will review your application within 24 hours</li>
+            <li>You will be contacted for any additional documentation</li>
+            <li>Final approval will be communicated via email and SMS</li>
+          </ul>
+        </div>
+
+        <div class="reference-info">
+          <p><strong>Reference Number:</strong> <span id="referenceNumber">LA2025082901</span></p>
+          <p><strong>Application Date:</strong> <span id="applicationDate"></span></p>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="restart-btn" onclick="restartApplication()">Start New Application</button>
+        <button class="download-btn" onclick="downloadSummary()">Download Summary</button>
+        <button class="submit-form-btn" onclick="downloadApplicationForm()">Download Application Form</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+    <div class="loading-spinner"></div>
+    <p>Processing your application...</p>
+  </div>
+
+  <!-- Floating Assistant -->
+  <div class="floating-assistant" id="floatingAssistant">
+    <div class="assistant-chat" id="assistantChat">
+      <div class="assistant-header">
+        <div class="assistant-avatar">🤖</div>
+        <div class="assistant-info">
+          <h3>Loan Assistant</h3>
+          <p>Here to help you!</p>
+        </div>
+        <button class="assistant-close" onclick="closeAssistant()">×</button>
+      </div>
+      <div class="assistant-messages" id="assistantMessages">
+        <div class="assistant-message bot">
+          👋 Hi! I'm your loan assistant. I can help you with:
+        </div>
+        <div class="help-topics">
+          <span class="help-topic" onclick="askQuestion('How do I fill the form?')">Fill Form</span>
+          <span class="help-topic" onclick="askQuestion('What documents do I need?')">Documents</span>
+          <span class="help-topic" onclick="askQuestion('How is EMI calculated?')">EMI Calculation</span>
+          <span class="help-topic" onclick="askQuestion('What are the eligibility criteria?')">Eligibility</span>
+        </div>
+      </div>
+      <div class="assistant-input-area">
+        <textarea class="assistant-input" id="assistantInput" placeholder="Ask me anything about the loan process..." rows="2" onkeypress="handleAssistantKeyPress(event)"></textarea>
+      </div>
+    </div>
+    <button class="assistant-button" id="assistantButton" onclick="toggleAssistant()">
+      💬
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
